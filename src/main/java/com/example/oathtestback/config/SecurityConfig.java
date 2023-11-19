@@ -29,20 +29,18 @@ public class SecurityConfig {
     private final MemberService memberService;
 
     @Bean
-    SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests((requests) -> requests
                         .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                         .anyRequest().authenticated()
                 );
-        http.oauth2Login((login) -> login
-                        .defaultSuccessUrl("/ouath/loginInfo", true)
-                        .redirectionEndpoint((endpoint) -> endpoint
-                                .baseUri("/login/oauth2/callback/*")
-                        )
-                );
-        http.userDetailsService(memberService);
-
+//        http.oauth2Login((login) -> login
+//                        .defaultSuccessUrl("/ouath/loginInfo", true)
+//                        .redirectionEndpoint((endpoint) -> endpoint
+//                                .baseUri("/login/oauth2/callback/*")
+//                        )
+//                );
 
         // cors
         http.cors(Customizer.withDefaults());
@@ -62,10 +60,5 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }
