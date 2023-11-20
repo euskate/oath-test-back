@@ -1,3 +1,4 @@
+/*
 package com.example.oathtestback.config.auth;
 
 import com.example.oathtestback.constant.Role;
@@ -64,5 +65,5 @@ public class OAuthAttributes {
 
 
 
-    
-    
+
+    */

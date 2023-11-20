@@ -28,9 +28,11 @@ public class SecurityConfig {
 
     private final MemberService memberService;
 
+/*
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+        // 인가
         http.authorizeHttpRequests((requests) -> requests
                         .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                         .anyRequest().authenticated()
@@ -51,7 +53,9 @@ public class SecurityConfig {
         http.headers((headers) -> headers.frameOptions((frame) -> frame.sameOrigin()));
         return http.build();
     }
+*/
 
+    // CORS 허가
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

@@ -13,11 +13,13 @@ import javax.sql.DataSource;
 @Configuration
 public class AppConfig {
 
+    // 비밀번호 암호화
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // H2 내장 데이터 보기
     @Bean
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
