@@ -32,7 +32,7 @@ public class Member {
         this.email = memberDto.getEmail();
         this.password = passwordEncoder.encode(memberDto.getPassword());
         this.name = memberDto.getName();
-        this.role = Role.ROLE_USER;
+        this.role = Role.USER;
     }
 
     // 수정 업데이트
