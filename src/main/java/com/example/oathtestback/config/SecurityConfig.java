@@ -51,7 +51,7 @@ public class SecurityConfig {
         http.cors(Customizer.withDefaults());
 
         // HTTP 기본 인증 사용
-        http.httpBasic(Customizer.withDefaults());
+        //http.httpBasic(Customizer.withDefaults());
 
         // 세션 사용하지 않음 (상태없는 REST API 사용)
         http.sessionManagement(session ->
