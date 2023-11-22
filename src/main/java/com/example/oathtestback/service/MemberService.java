@@ -53,4 +53,12 @@ public class MemberService implements UserDetailsService {
     }
 
 
+    public MemberDto myPage(String email) {
+        Member member = memberRepository.findByEmail(email);
+        if (member == null) {
+            new RuntimeException("회원을 찾을 수 없음");
+        }
+        MemberDto memberDto = MemberDto.of(member);
+        return memberDto;
+    }
 }

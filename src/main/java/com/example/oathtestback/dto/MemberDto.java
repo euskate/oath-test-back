@@ -13,11 +13,14 @@ public class MemberDto {
 
     private String name;
 
-    public MemberDto of(Member member) {
+    private String role;
+
+    public static MemberDto of(Member member) {
         MemberDto memberDto = new MemberDto();
         memberDto.email = member.getEmail();
         memberDto.password = member.getPassword();
         memberDto.name = member.getName();
+        memberDto.role = member.getRole().getName();
         return memberDto;
     }
 }

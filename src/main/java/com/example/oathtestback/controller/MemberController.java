@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Map;
 
 @RestController
@@ -21,6 +22,13 @@ public class MemberController {
     public ResponseEntity register(MemberDto memberDto) {
         Long id = memberService.register(memberDto, passwordEncoder);
         return ResponseEntity.ok(id);
+    }
+
+    @GetMapping("/member/myPage")
+    public ResponseEntity myPage(Principal principal) {
+        String email = principal.getName();
+        MemberDto memberDto = memberService.myPage(email);
+        return ResponseEntity.ok(memberDto);
     }
 }
 
