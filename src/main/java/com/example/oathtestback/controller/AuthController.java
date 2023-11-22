@@ -4,10 +4,13 @@ import com.example.oathtestback.dto.LoginRequestDto;
 import com.example.oathtestback.dto.LoginResponseDto;
 import com.example.oathtestback.service.JwtTokenService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,8 +27,17 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login ok";
+    public String login(Principal principal) {
+        String email = principal.getName();
+        System.out.println("email = " + email);
+
+        return "login ok" + email;
+    }
+
+    @GetMapping("/member")
+    public ResponseEntity member(Principal principal) {
+        String email = principal.getName();
+        return ResponseEntity.ok(email);
     }
 
     @PostMapping("/authenticate")
